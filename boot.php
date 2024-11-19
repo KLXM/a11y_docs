@@ -7,15 +7,8 @@ if (rex::isBackend() && rex::getUser()) {
     // Mermaid für Diagramme
     rex_view::addJsFile('https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js');
     
-    // Initialisierungs-Script für Mermaid
-    rex_view::addJsCode('
-        if (typeof mermaid !== "undefined") {
-            mermaid.initialize({
-                startOnLoad: true,
-                theme: "default"
-            });
-        }
-    ');
+    // Wir fügen ein init.js File hinzu für die Mermaid-Initialisierung
+    rex_view::addJsFile($this->getAssetsUrl('js/init.js'));
     
     // Haupt-Script
     rex_view::addJsFile($this->getAssetsUrl('js/docs.js'));
