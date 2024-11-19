@@ -14,5 +14,14 @@ requires:
     php:
         version: '>=8.1'
 
-pages:
-    index: { title: 'Dokumentation' }
+
+subpages:
+        main:
+            title: Cheatsheet
+            popup: true
+            hidden: true
+        generator:
+            title: Emulator
+            hidden: true
+            hasLayout: false
+            linkAttr: { target: _blank }
