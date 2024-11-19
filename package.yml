@@ -20,7 +20,7 @@ subpages:
             title: Cheatsheet
             popup: true
             hidden: true
-        generator:
+        screenreader:
             title: Emulator
             hidden: true
             hasLayout: false
