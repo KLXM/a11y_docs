@@ -8,13 +8,13 @@ page:
     perm: admin
     icon: rex-icon fa-universal-access
     block: system
-    popup: false
-    subpath: pages/index.php
     subpages:
+        index:
+            title: 'Übersicht'
         cheatsheet:
             title: 'Cheatsheet'
         screenreader:
-            title: Emulator
+            title: 'Emulator'
             hidden: true
             hasLayout: false
             linkAttr:
