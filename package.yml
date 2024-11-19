@@ -15,8 +15,7 @@ page:
             title: 'Emulator'
             hidden: true
             hasLayout: false
-            linkAttr:
-                target: _blank
+            linkAttr: 'target: _blank'
 
 requires:
     redaxo: '^5.18.0'
