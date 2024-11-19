@@ -1,8 +1,18 @@
-package: addon_key
-version: '0.0.0'
-author: 'Friends Of REDAXO'
-supportpage: https://github.com/FriendsOfREDAXO/addon_key
+package: a11y_docs
+version: '1.0.0'
+author: Your Name
+supportpage: github.com/yourusername/a11y_docs
+
+page:
+    title: 'A11y Dokumentation'
+    perm: admin
+    icon: rex-icon fa-universal-access
+    block: system
+
 requires:
-    redaxo: '^5.15.1'
+    redaxo: '^5.18.0'
     php:
-        version: '>=8.1, <9'
+        version: '>=8.1'
+
+pages:
+    index: { title: 'Dokumentation' }
