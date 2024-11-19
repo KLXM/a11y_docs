@@ -10,7 +10,7 @@ $searchField = '
 <div class="docs-header">
     <input type="text" 
            class="docs-search form-control" 
-           placeholder="' . $addon->i18n('search') . '" 
+           placeholder="' . $addon->i18n('a11y_docs_search') . '" 
            data-search>
 </div>';
 
@@ -32,6 +32,6 @@ $body = $searchField . '
 
 // Fragment ausgeben
 $fragment = new rex_fragment();
-$fragment->setVar('title', $addon->i18n('title'));
+$fragment->setVar('title', $addon->i18n('a11y_docs_title'));
 $fragment->setVar('body', $body, false);
 echo $fragment->parse('core/page/section.php');
