@@ -3,6 +3,18 @@ $(document).on('rex:ready', function() {
     const $toc = $('#toc');
     const $searchInput = $('.docs-search');
     
+    // Mermaid initialisieren
+    if (typeof mermaid !== 'undefined') {
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            securityLevel: 'loose',
+            themeVariables: {
+                fontSize: '14px'
+            }
+        });
+    }
+    
     // Inhaltsverzeichnis generieren
     function generateTOC() {
         const headings = $content.find('h1, h2, h3');
@@ -96,11 +108,6 @@ $(document).on('rex:ready', function() {
     // Initialisierung
     generateTOC();
     updateActiveSection();
-    
-    // Mermaid Diagramme initialisieren, falls vorhanden
-    if (typeof mermaid !== 'undefined') {
-        mermaid.init();
-    }
     
     // Wenn ein Hash in der URL ist, dorthin scrollen
     if (window.location.hash) {
