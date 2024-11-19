@@ -51,7 +51,7 @@ Leichte und einfache Sprache verbessern die Verständlichkeit von Texten. Mensch
 
 ## Möglicher Ablauf
 
-```mermaid
+<div class="mermaid">
 graph TD
     A[Beginne Inhaltserstellung] --> B{Verwendung vorgefertigter Inhaltsblöcke?}
     B -->|Ja| C[Folge integrierten Barrierefreiheitsrichtlinien]
@@ -84,9 +84,5 @@ graph TD
     V --> W[Plane zukünftige Verbesserungen]
     W --> R
     R --> X[Ende]
+</div>
 
-    style T fill:#FFA500,stroke:#333,stroke-width:2px
-    style U fill:#98FB98,stroke:#333,stroke-width:2px
-    style V fill:#FFA07A,stroke:#333,stroke-width:2px
-    style W fill:#ADD8E6,stroke:#333,stroke-width:2px
-```
