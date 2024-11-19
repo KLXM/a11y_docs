@@ -300,6 +300,7 @@ $(document).on('rex:ready', function() {
     let isSpeaking = false;
     let utterance = null;
     const synth = window.speechSynthesis;
+    let scrollTimeout;
 
     // Element anzeigen
     function showElement(index) {
@@ -383,6 +384,19 @@ $(document).on('rex:ready', function() {
         const index = parseInt($(this).data('index'));
         showElement(index);
     });
+
+    // Event: Scroll-Handler mit Debounce
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
 
     // Event: Tastatur-Navigation
     $(document).on('keydown', function(e) {
@@ -476,6 +490,6 @@ $(document).on('rex:ready', function() {
             B: Zur nächsten Schaltfläche<br>
             Leertaste: Element vorlesen (wenn Sprachausgabe aktiviert)
         `)
-        .appendTo('.preview-sidebar');
+        .appendTo('#preview-content');
 });
 </script>
