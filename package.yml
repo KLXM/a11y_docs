@@ -9,8 +9,6 @@ page:
     icon: rex-icon fa-universal-access
     block: system
     subpages:
-        index:
-            title: 'Übersicht'
         cheatsheet:
             title: 'Cheatsheet'
         screenreader:
