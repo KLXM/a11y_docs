@@ -3,7 +3,7 @@
 $addon = rex_addon::get('a11y_docs');
 
 // Markdown-Datei einlesen
-$markdown = rex_file::get(rex_path::addon('a11y_docs', 'docs/main.md'));
+$markdown = rex_file::get(rex_path::addon('a11y_docs', 'README.md'));
 
 // Parsedown instanziieren
 $parser = new ParsedownExtra();
