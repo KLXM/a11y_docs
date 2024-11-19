@@ -1,0 +1,21 @@
+a11y_docs_title = Barrierefreiheit
+a11y_docs_search = Dokumentation durchsuchen...
+
+a11y_docs_navigation = Navigation
+a11y_docs_content = Inhalt
+
+# Für die Readme/Doku
+a11y_docs_introduction = Einführung
+a11y_docs_overview = Übersicht
+a11y_docs_structure = Struktur & Semantik
+a11y_docs_images = Bilder & Alt-Texte
+a11y_docs_links = Links & Navigation
+a11y_docs_colors = Farben & Kontraste
+a11y_docs_media = Medieninhalte
+a11y_docs_keyboard = Tastaturzugänglichkeit
+a11y_docs_testing = Testen & Prüfen
+a11y_docs_pdfs = Barrierefreie PDFs
+a11y_docs_language = Leichte Sprache
+
+# Meldungen
+a11y_docs_no_results = Keine Suchergebnisse gefunden
