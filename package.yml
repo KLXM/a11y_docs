@@ -8,18 +8,15 @@ page:
     perm: admin
     icon: rex-icon fa-universal-access
     block: system
+    subpages:
+        screenreader:
+            title: Emulator
+            hidden: true
+            hasLayout: false
+            linkAttr:
+                target: _blank
 
 requires:
     redaxo: '^5.18.0'
     php:
         version: '>=8.1'
-
-subpages:
-    main:
-        title: Cheatsheet
-    screenreader:
-        title: Emulator
-        hidden: true
-        hasLayout: false
-        linkAttr:
-            target: _blank
