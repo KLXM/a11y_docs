@@ -1,6 +1,6 @@
 .a11y-docs {
-    max-width: 1600px;
-    margin: 0 auto;
+    margin: 0;
+    padding: 0;
 }
 
 .docs-header {
@@ -14,7 +14,7 @@
 
 .docs-container {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 250px 1fr;
     gap: 2rem;
 }
 
@@ -56,13 +56,6 @@
 
 .docs-content {
     min-width: 0;
-}
-
-.content-wrapper {
-    background: #fff;
-    padding: 2rem;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 /* Markdown Styling */
@@ -113,6 +106,12 @@
     padding: 0;
 }
 
+/* Mermaid Diagramme */
+.mermaid {
+    margin: 2rem 0;
+    overflow: auto;
+}
+
 mark {
     background: #fff3cd;
     padding: 0.2em 0;
@@ -128,21 +127,5 @@ mark {
         position: relative;
         height: auto;
         max-height: 300px;
-    }
-}
-
-/* Print */
-@media print {
-    .docs-header,
-    .docs-nav {
-        display: none;
-    }
-    
-    .docs-container {
-        display: block;
-    }
-    
-    .content-wrapper {
-        box-shadow: none;
     }
 }
