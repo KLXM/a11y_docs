@@ -11,10 +11,14 @@ $parser = new ParsedownExtra();
 // Markdown zu HTML konvertieren
 $content = $parser->text($markdown);
 
+// HTML entities dekodieren
+$content = html_entity_decode($content, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
 // Inhaltsverzeichnis generieren
 $toc = [];
 $html = new DOMDocument();
-@$html->loadHTML('<?xml encoding="UTF-8">' . $content);
+$html->encoding = 'UTF-8';
+$html->loadHTML('<?xml encoding="UTF-8">' . $content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 $xpath = new DOMXPath($html);
 
 // Alle Überschriften finden und IDs zuweisen
@@ -34,8 +38,22 @@ foreach ($xpath->query('//h1|//h2|//h3') as $headline) {
     ];
 }
 
-// HTML zurück zu String
+// HTML zurück zu String, dabei UTF-8 beibehalten
 $content = $html->saveHTML();
+
+// Content bereinigen
+$content = preg_replace(
+    [
+        '/^<!DOCTYPE.+?>/', 
+        '/<\?xml.*?>/',
+        '/<html>/',
+        '/<body>/',
+        '/<\/body>/',
+        '/<\/html>/'
+    ], 
+    '', 
+    $content
+);
 
 // Fragment für die Ausgabe vorbereiten
 $fragment = new rex_fragment();
@@ -44,7 +62,7 @@ $fragment->setVar('content', '
         <div class="docs-header">
             <input type="text" 
                    class="docs-search form-control" 
-                   placeholder="Dokumentation durchsuchen..." 
+                   placeholder="' . rex_i18n::msg('a11y_docs_search') . '" 
                    data-search>
         </div>
 
@@ -59,7 +77,7 @@ foreach ($toc as $item) {
     $fragment->setVar('content', $fragment->getVar('content') . '
         <li style="margin-left: '.$indent.'px">
             <a href="#'.$item['id'].'" class="toc-link" data-toc-link>
-                '.$item['title'].'
+                '.htmlspecialchars($item['title']).'
             </a>
         </li>');
 }
