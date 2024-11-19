@@ -4,7 +4,7 @@ author: Your Name
 supportpage: github.com/yourusername/a11y_docs
 
 page:
-    title: 'A11y Dokumentation'
+    title: 'Barrierefreiheit'
     perm: admin
     icon: rex-icon fa-universal-access
     block: system
