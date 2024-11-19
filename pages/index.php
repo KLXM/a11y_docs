@@ -1,13 +1,10 @@
 <?php
-$addon = rex_addon::get('a11y_docs');
 
-// URL aus Post verarbeiten
-$url = rex_request('url', 'string', '');
-$elements = [];
-$error = '';
+class ScreenreaderAnalyzer {
+    private $dom;
+    private $xpath;
 
-if ($url) {
-    try {
+    public function loadURL($url) {
         $context = stream_context_create([
             'http' => [
                 'method' => "GET",
@@ -16,125 +13,161 @@ if ($url) {
                 'ignore_errors' => true
             ]
         ]);
-        
+
         $html = @file_get_contents($url, false, $context);
-        
         if ($html === false) {
             throw new Exception("URL konnte nicht geladen werden");
         }
-        
+
         $html = mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8');
-        $dom = new DOMDocument();
-        @$dom->loadHTML($html, LIBXML_NOERROR);
-        $xpath = new DOMXPath($dom);
-        
-        // Elemente sammeln
+        $this->dom = new DOMDocument();
+        @$this->dom->loadHTML($html, LIBXML_NOERROR);
+        $this->xpath = new DOMXPath($this->dom);
+
+        return $this->analyzeContent();
+    }
+
+    private function analyzeContent() {
         $elements = [];
-        $body = $dom->getElementsByTagName('body')->item(0);
-        
-        function processNode($node, &$elements, $level = 0) {
-            if (!$node || $node->nodeType !== XML_ELEMENT_NODE) return;
-            
-            // Script und Style Tags überspringen
-            if (in_array(strtolower($node->nodeName), ['script', 'style', 'noscript'])) return;
-            
-            $tag = strtolower($node->nodeName);
-            $text = trim($node->textContent);
-            
-            // Attribute sammeln
-            $attributes = [];
-            if ($node->hasAttributes()) {
-                $relevantAttrs = ['id', 'class', 'role', 'aria-label', 'alt', 'href', 'src', 'title', 'target'];
-                foreach ($relevantAttrs as $attr) {
-                    if ($node->hasAttribute($attr)) {
-                        $attributes[$attr] = $node->getAttribute($attr);
-                    }
-                }
-            }
-            
-            // Element-Typ bestimmen
-            $type = '';
-            switch ($tag) {
-                case 'h1': case 'h2': case 'h3': case 'h4': case 'h5': case 'h6':
-                    $type = 'heading';
-                    break;
-                case 'a':
-                    $type = 'link';
-                    break;
-                case 'img':
-                    $type = 'image';
-                    break;
-                case 'button':
-                    $type = 'button';
-                    break;
-                case 'input': case 'select': case 'textarea':
-                    $type = 'form-control';
-                    break;
-                case 'nav':
-                    $type = 'navigation';
-                    break;
-                default:
-                    $type = isset($attributes['role']) ? $attributes['role'] : 'content';
-            }
-            
-            // Screenreader-Ansage erstellen
-            $announcement = '';
-            switch ($type) {
-                case 'heading':
-                    $level = substr($tag, 1);
-                    $announcement = "Überschrift Ebene $level: $text";
-                    break;
-                case 'link':
-                    $href = $attributes['href'] ?? '#';
-                    $announcement = "Link: $text" . ($href !== '#' ? ", führt zu: $href" : '');
-                    break;
-                case 'image':
-                    $announcement = "Bild: " . ($attributes['alt'] ?? 'Keine Beschreibung verfügbar');
-                    break;
-                case 'button':
-                    $announcement = "Schaltfläche: $text";
-                    break;
-                case 'form-control':
-                    $inputType = $attributes['type'] ?? 'text';
-                    $announcement = "Eingabefeld ($inputType)" . ($text ? ": $text" : '');
-                    break;
-                default:
-                    $announcement = $text;
-            }
-            
-            if ($text !== '' || $type === 'image') {
-                $elements[] = [
-                    'type' => $type,
-                    'tag' => $tag,
-                    'text' => $text,
-                    'level' => $level,
-                    'attributes' => $attributes,
-                    'announcement' => $announcement,
-                    'html' => $dom->saveHTML($node)
-                ];
-            }
-            
-            if ($node->hasChildNodes()) {
-                foreach ($node->childNodes as $child) {
-                    processNode($child, $elements, $level + 1);
-                }
-            }
-        }
-        
+        $body = $this->dom->getElementsByTagName('body')->item(0);
         if ($body) {
-            processNode($body, $elements);
+            foreach ($body->childNodes as $child) {
+                $this->processNode($child, $elements, 0);
+            }
         }
-        
+        return $elements;
+    }
+
+    private function processNode($node, &$elements, $level = 0) {
+        if (!$node || $node->nodeType !== XML_ELEMENT_NODE) return;
+        if (in_array(strtolower($node->nodeName), ['script', 'style', 'noscript'])) return;
+
+        $nodeInfo = $this->extractNodeInfo($node, $level);
+        if ($nodeInfo && (trim($nodeInfo['text']) !== '' || $nodeInfo['type'] === 'image')) {
+            $elements[] = $nodeInfo;
+        }
+
+        if ($node->hasChildNodes()) {
+            foreach ($node->childNodes as $child) {
+                $this->processNode($child, $elements, $level + 1);
+            }
+        }
+    }
+
+    private function extractNodeInfo($node, $level) {
+        $tag = strtolower($node->nodeName);
+        $text = trim($node->textContent);
+
+        $info = [
+            'tag' => $tag,
+            'level' => $level,
+            'text' => $text,
+            'html' => $this->dom->saveHTML($node),
+            'attributes' => []
+        ];
+
+        // Relevante Attribute sammeln
+        if ($node->hasAttributes()) {
+            $relevantAttrs = ['id', 'class', 'role', 'aria-label', 'alt', 'href', 'src', 'title', 'target', 'lang'];
+            foreach ($relevantAttrs as $attr) {
+                if ($node->hasAttribute($attr)) {
+                    $info['attributes'][$attr] = $node->getAttribute($attr);
+                }
+            }
+        }
+
+        // Typ und Ankündigung bestimmen
+        $info['type'] = $this->determineElementType($tag, $info['attributes']);
+        $info['announcement'] = $this->createAnnouncement($info);
+
+        return $info;
+    }
+
+    private function determineElementType($tag, $attributes) {
+        $role = $attributes['role'] ?? '';
+        $class = $attributes['class'] ?? '';
+
+        switch ($tag) {
+            case 'h1': case 'h2': case 'h3': case 'h4': case 'h5': case 'h6':
+                return 'heading';
+            case 'a':
+                return 'link';
+            case 'img':
+                return 'image';
+            case 'button':
+                return 'button';
+            case 'input': case 'select': case 'textarea':
+                return 'form-control';
+            case 'nav':
+                return 'navigation';
+            case 'main':
+                return 'main';
+            case 'header':
+                return 'banner';
+            case 'footer':
+                return 'contentinfo';
+            case 'div':
+                if (strpos($class, 'logo') !== false) return 'logo';
+                if ($role) return $role;
+                return 'content';
+            default:
+                return $role ?: 'content';
+        }
+    }
+
+    private function createAnnouncement($info) {
+        $type = $info['type'];
+        $text = $info['text'];
+        $attributes = $info['attributes'] ?? [];
+
+        switch ($type) {
+            case 'heading':
+                $level = substr($info['tag'], 1);
+                return "Überschrift Ebene $level: $text";
+            case 'link':
+                $href = $attributes['href'] ?? '#';
+                return "Link: $text" . ($href !== '#' ? ", führt zu: $href" : '');
+            case 'image':
+                return "Bild: " . ($attributes['alt'] ?? 'Keine Beschreibung verfügbar');
+            case 'button':
+                return "Schaltfläche: $text";
+            case 'navigation':
+                return "Navigation";
+            case 'form-control':
+                $type = $attributes['type'] ?? 'text';
+                return "Eingabefeld ($type)" . ($text ? ": $text" : '');
+            case 'banner':
+                return "Kopfbereich";
+            case 'contentinfo':
+                return "Fußbereich";
+            case 'main':
+                return "Hauptinhalt";
+            case 'logo':
+                return "Logo: $text";
+            default:
+                return $text;
+        }
+    }
+}
+
+// Hauptseite
+$addon = rex_addon::get('a11y_docs');
+$url = rex_request('url', 'string', '');
+$elements = [];
+$error = '';
+
+// URL verarbeiten
+if ($url) {
+    try {
+        $analyzer = new ScreenreaderAnalyzer();
+        $elements = $analyzer->loadURL($url);
     } catch (Exception $e) {
         $error = $e->getMessage();
     }
 }
 
-// Formular und Grundstruktur ausgeben
-$content = '';
-
 // Formular
-$formContent = '
+$content = '
 <div class="rex-form">
     <form action="' . rex_url::currentBackendPage() . '" method="post">
         <div class="panel panel-edit">
@@ -161,8 +194,6 @@ $formContent = '
     </form>
 </div>';
 
-$content .= $formContent;
-
 // Fehlermeldung
 if ($error) {
     $content .= rex_view::error($error);
@@ -177,7 +208,8 @@ if (!empty($elements)) {
         'links' => count(array_filter($elements, fn($e) => $e['type'] === 'link')),
         'images' => count(array_filter($elements, fn($e) => $e['type'] === 'image'))
     ];
-    
+
+    // Statistik anzeigen
     $content .= '
     <div class="panel panel-default">
         <header class="panel-heading">
@@ -204,37 +236,48 @@ if (!empty($elements)) {
             </div>
         </div>
     </div>';
-    
-    // Hauptcontainer für die Vorschau
+
+    // Hauptanalyse-Container
     $content .= '
-    <div class="preview-container" style="display:grid; grid-template-columns:1fr 400px; gap:20px;">
-        <div class="elements-list" style="overflow-y:auto;">';
-    
+    <div class="preview-container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Seitenstruktur</div>
+                    <div class="panel-body p-0">
+                        <div class="list-group">';
+
     // Elemente auflisten
     foreach ($elements as $idx => $element) {
         $typeClass = 'preview-' . $element['type'];
         $margin = $element['level'] * 20;
         
         $content .= '
-        <div class="panel panel-default element-item ' . $typeClass . '" 
-             data-index="' . $idx . '" 
-             style="margin-bottom:5px; margin-left:' . $margin . 'px; cursor:pointer;">
-            <div class="panel-body" style="padding:10px;">
-                <span class="badge" style="margin-right:5px;">' . rex_escape($element['type']) . '</span>
+            <button class="list-group-item element-item ' . $typeClass . '" 
+                    data-index="' . $idx . '" 
+                    style="margin-left: ' . $margin . 'px; cursor: pointer;">
+                <span class="badge">' . rex_escape($element['type']) . '</span>
                 <span class="text-muted">' . rex_escape($element['announcement']) . '</span>
-            </div>
-        </div>';
+            </button>';
     }
-    
+
     $content .= '
-        </div>
-        <div class="preview-sidebar" style="background:#f5f5f5; padding:15px; border-radius:4px;">
-            <h3>Vorschau</h3>
-            <div id="preview-content">Element auswählen</div>
-            <div style="margin-top:20px;">
-                <label class="checkbox">
-                    <input type="checkbox" id="tts"> Sprachausgabe aktivieren
-                </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default sticky-top">
+                    <div class="panel-heading">Vorschau</div>
+                    <div class="panel-body">
+                        <div id="preview-content">Element auswählen</div>
+                        <div class="checkbox" style="margin-top:20px">
+                            <label>
+                                <input type="checkbox" id="tts"> Sprachausgabe aktivieren
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>';
