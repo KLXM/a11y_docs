@@ -119,3 +119,12 @@ $(document).on('rex:ready', function() {
         }
     }
 });
+
+$(document).on('rex:ready', function() {
+    if (typeof mermaid !== "undefined") {
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: "default"
+        });
+    }
+});
