@@ -1,149 +1,114 @@
 $(document).on('rex:ready', function() {
-    // Elemente selektieren
-    const $searchInput = $('[data-search]');
-    const $content = $('[data-content]');
-    const $tocLinks = $('[data-toc-link]');
+    const $content = $('.content-wrapper');
+    const $toc = $('#toc');
+    const $searchInput = $('.docs-search');
     
-    // Intersection Observer für Überschriften
-    const headings = $content.find('h1, h2, h3').get();
-    let currentHeading = null;
-    
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 1.0
-    };
-    
-    const headingObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                currentHeading = entry.target;
-                updateActiveLink(currentHeading.id);
+    // Inhaltsverzeichnis generieren
+    function generateTOC() {
+        const headings = $content.find('h1, h2, h3');
+        const toc = $('<ul class="toc-list"></ul>');
+        
+        headings.each(function(index) {
+            const $heading = $(this);
+            const level = parseInt($heading.prop('tagName').charAt(1));
+            const title = $heading.text();
+            const id = 'heading-' + index;
+            
+            // ID zur Überschrift hinzufügen
+            $heading.attr('id', id);
+            
+            // TOC-Eintrag erstellen
+            const $li = $('<li>').css('margin-left', (level - 1) * 20 + 'px');
+            const $link = $('<a>')
+                .addClass('toc-link')
+                .attr('href', '#' + id)
+                .text(title);
+            
+            $li.append($link);
+            toc.append($li);
+        });
+        
+        $toc.html(toc);
+        
+        // Smooth Scroll für TOC-Links
+        $('.toc-link').on('click', function(e) {
+            e.preventDefault();
+            const target = $($(this).attr('href'));
+            if (target.length) {
+                $('html, body').animate({
+                    scrollTop: target.offset().top - 20
+                }, 500);
             }
         });
-    }, observerOptions);
+    }
     
-    headings.forEach(heading => headingObserver.observe(heading));
-    
-    // Smooth Scroll für TOC Links
-    $tocLinks.on('click', function(e) {
-        e.preventDefault();
-        const targetId = $(this).attr('href').slice(1);
-        const $target = $('#' + targetId);
+    // Aktiven Abschnitt markieren
+    function updateActiveSection() {
+        const scrollPosition = $(window).scrollTop();
         
-        if ($target.length) {
-            $('html, body').animate({
-                scrollTop: $target.offset().top
-            }, 500);
+        $('h1, h2, h3').each(function() {
+            const $heading = $(this);
+            const headingPosition = $heading.offset().top;
             
-            // URL aktualisieren ohne Scroll
-            history.pushState(null, null, `#${targetId}`);
-        }
-    });
+            if (headingPosition - 100 <= scrollPosition) {
+                const id = $heading.attr('id');
+                $('.toc-link').removeClass('active');
+                $('.toc-link[href="#' + id + '"]').addClass('active');
+            }
+        });
+    }
     
-    // Live-Suche Implementierung
+    // Suche mit mark.js
+    let markInstance = new Mark($content[0]);
     let searchTimeout;
+    
+    function performSearch() {
+        const searchTerm = $searchInput.val();
+        
+        // Reset previous marks
+        markInstance.unmark();
+        
+        if (searchTerm) {
+            markInstance.mark(searchTerm, {
+                done: function(counter) {
+                    // Scroll zum ersten Ergebnis
+                    if (counter > 0) {
+                        const firstMark = $('mark').first();
+                        if (firstMark.length) {
+                            $('html, body').animate({
+                                scrollTop: firstMark.offset().top - 100
+                            }, 500);
+                        }
+                    }
+                }
+            });
+        }
+    }
+    
+    // Event Listeners
     $searchInput.on('input', function() {
         clearTimeout(searchTimeout);
-        const $this = $(this);
-        searchTimeout = setTimeout(() => {
-            const searchTerm = $this.val().toLowerCase().trim();
-            handleSearch(searchTerm);
-        }, 200); // Debounce für Performance
+        searchTimeout = setTimeout(performSearch, 300);
     });
     
-    function handleSearch(term) {
-        // Alle durchsuchbaren Elemente
-        const $searchableElements = $content.find('p, h1, h2, h3, h4, h5, h6, li, td, th');
-        
-        // Highlight zurücksetzen
-        $('.search-highlight').each(function() {
-            $(this).contents().unwrap();
-        });
-        
-        if (!term) {
-            // Wenn Suchfeld leer, alles wieder anzeigen
-            $searchableElements.show().closest('section').show();
-            return;
-        }
-        
-        let hasResults = false;
-        
-        $searchableElements.each(function() {
-            const $element = $(this);
-            const text = $element.text().toLowerCase();
-            const $parent = $element.closest('section').length ? 
-                          $element.closest('section') : 
-                          $element;
-            
-            if (text.includes(term)) {
-                hasResults = true;
-                $parent.show();
-                
-                // Text hervorheben
-                const regex = new RegExp(`(${term})`, 'gi');
-                $element.html($element.html().replace(
-                    regex, 
-                    '<span class="search-highlight">$1</span>'
-                ));
-            } else {
-                if (!$parent.find(`*:not(h1, h2, h3):contains('${term}')`).length) {
-                    $parent.hide();
-                }
-            }
-        });
-        
-        // "Keine Ergebnisse" Nachricht
-        const $noResults = $('.no-results-message');
-        if (!hasResults) {
-            if (!$noResults.length) {
-                $('<div>')
-                    .addClass('no-results-message')
-                    .css({
-                        textAlign: 'center',
-                        padding: '2rem'
-                    })
-                    .text('Keine Ergebnisse gefunden')
-                    .prependTo($content);
-            }
-        } else {
-            $noResults.remove();
-        }
-    }
+    $(window).on('scroll', _.throttle(updateActiveSection, 100));
     
-    function updateActiveLink(headingId) {
-        // Aktiven Link in der Navigation aktualisieren
-        $tocLinks.removeClass('active');
-        $(`[href="#${headingId}"]`)
-            .addClass('active')
-            .get(0)?.scrollIntoView({
-                behavior: 'smooth',
-                block: 'nearest'
-            });
-    }
+    // Initialisierung
+    generateTOC();
+    updateActiveSection();
     
-    // Initialisierung von Mermaid Diagrammen
+    // Mermaid Diagramme initialisieren, falls vorhanden
     if (typeof mermaid !== 'undefined') {
-        mermaid.initialize({
-            startOnLoad: true,
-            theme: 'default',
-            securityLevel: 'loose',
-            themeVariables: {
-                fontSize: '14px'
-            }
-        });
+        mermaid.init();
     }
     
-    // Code-Block Syntax Highlighting
-    if (typeof hljs !== 'undefined') {
-        $('pre code').each(function(i, block) {
-            hljs.highlightBlock(block);
-        });
-    }
-    
-    // Initial aktiven Abschnitt markieren (falls URL-Hash vorhanden)
+    // Wenn ein Hash in der URL ist, dorthin scrollen
     if (window.location.hash) {
-        const initialId = window.location.hash.slice(1);
-        updateActiveLink(initialId);
+        const target = $(window.location.hash);
+        if (target.length) {
+            setTimeout(function() {
+                $('html, body').scrollTop(target.offset().top - 20);
+            }, 100);
+        }
     }
 });
