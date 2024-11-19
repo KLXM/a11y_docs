@@ -5,7 +5,6 @@ supportpage: github.com/yourusername/a11y_docs
 
 page:
     title: 'Barrierefreiheit'
-    perm: admin
     icon: rex-icon fa-universal-access
     block: system
     subpages:
