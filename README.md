@@ -1,5 +1,10 @@
 # **REDAXO Barrierefreiheits-Cheatsheet für Redakteur:innen**
 
+## Sehenswert So wird ein Screenreader verwendet:
+
+[Video auf YouTube](https://www.youtube.com/watch?v=lC6VO3ai8Bg)
+
+
 ## Kurz und knapp
 ---
 
