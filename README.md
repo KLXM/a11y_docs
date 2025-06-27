@@ -8,6 +8,78 @@
 ## Kurz und knapp
 ---
 
+---
+
+## **5-Minuten-Schnellcheck vor jeder Veröffentlichung**
+
+**✅ Bevor Sie "Veröffentlichen" klicken:**
+
+1. **Alt-Texte da?** → Haben alle Bilder einen Alt-Text oder alt="" bei dekorativen Bildern?
+2. **Links verständlich?** → Kann man am Linktext erkennen, wohin er führt?
+3. **Überschriften logisch?** → H1 → H2 → H3 (keine Sprünge)?
+4. **Kontrast gut?** → Ist der Text auch bei schlechtem Bildschirm lesbar?
+5. **For_sa11y geprüft?** → Zeigt der blaue Button unten rechts grünes Licht?
+
+**⏱️ Das dauert wirklich nur 5 Minuten und verhindert 90% aller Probleme!**
+
+---
+
+### **Was ist das BFSG?**
+Das Barrierefreiheitsstärkungsgesetz ist ein deutsches Gesetz, das seit Juni 2025 gilt. Es schreibt vor, dass bestimmte Websites und Apps barrierefrei sein müssen, damit alle Menschen sie nutzen können.
+
+### **Für wen gilt das BFSG?**
+**Das Gesetz gilt für Unternehmen, die:**
+- Online-Shops betreiben (E-Commerce)
+- Bankdienstleistungen online anbieten
+- E-Books verkaufen
+- Verkehrsdienste anbieten (Bus, Bahn, Flug)
+- Telefon- und Internetdienste anbieten
+- Streaming-Dienste betreiben
+
+**Ausnahmen gibt es für:**
+- Sehr kleine Unternehmen (weniger als 10 Mitarbeiter UND Jahresumsatz unter 2 Millionen Euro)
+- Reine Informationswebsites ohne Verkauf
+- Interne Firmenwebsites
+
+### **Was muss ich tun?**
+1. **Barrierefreie Website**: Ihre Website muss den WCAG 2.1 Standard erfüllen
+2. **Barrierefreiheitserklärung**: Sie müssen eine Erklärung auf Ihrer Website veröffentlichen
+3. **Feedback-Möglichkeit**: Nutzer müssen Probleme melden können
+
+### **Wichtige Termine**
+- **Seit 28. Juni 2025**: Das Gesetz gilt für alle neuen Websites und Apps
+- **Bis 28. Juni 2030**: Auch bestehende Websites müssen angepasst sein
+
+### **Was passiert bei Verstößen?**
+- Bußgelder bis zu 100.000 Euro möglich
+- Abmahnungen durch Konkurrenten oder Verbraucherschützer
+- Imageprobleme für Ihr Unternehmen
+
+### **Praktische Tipps für Sie**
+✅ **Sofort machen:**
+- Überprüfen Sie, ob das BFSG für Sie gilt
+- Nutzen Sie die Tools in diesem Cheatsheet für erste Tests
+- Erstellen Sie eine einfache Barrierefreiheitserklärung
+
+✅ **Mittelfristig planen:**
+- Beauftragen Sie eine professionelle Prüfung
+- Schulen Sie Ihr Team
+- Erstellen Sie einen Verbesserungsplan
+
+✅ **Langfristig sicherstellen:**
+- Regelmäßige Kontrollen
+- Updates der Barrierefreiheitserklärung
+- Feedback ernst nehmen und umsetzen
+
+### **Wo finde ich Hilfe?**
+- **Bundesfachstelle Barrierefreiheit**: [bundesfachstelle-barrierefreiheit.de](https://www.bundesfachstelle-barrierefreiheit.de)
+- **BFSG-Gesetz mit praktischen Infos**: [bfsg-gesetz.de](https://bfsg-gesetz.de/)
+- **Bundesministerium für Arbeit und Soziales**: [bmas.de](https://www.bmas.de/DE/Service/Gesetze-und-Gesetzesvorhaben/barrierefreiheitsstaerkungsgesetz.html)
+
+**🚨 Wichtiger Hinweis:** Diese Informationen ersetzen keine Rechtsberatung. Lassen Sie sich bei Unsicherheiten von einem Anwalt beraten!
+
+---
+
 | **Kategorie**                  | **Aktion**                                                                                             | **Schritte / Hinweise**                                                                                                    |
 |--------------------------------|--------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
 | **Struktur und Semantik**       | **Achten Sie bei der Verwendung der vorbereiteten Inhaltsblöcke auf Barrierefreiheitshinweise**        | Ihr REDAXO bietet vorbereitete Inhaltsblöcke. Achten Sie darauf, dass diese Blöcke korrekt verwendet werden und entsprechende Hinweise zur Barrierefreiheit (z.B. Alternativtexte für Bilder, richtige Überschriftenhierarchie) beachtet werden. |
@@ -21,14 +93,24 @@
 | **Tastaturzugänglichkeit**      | **Tab-Reihenfolge prüfen**                                                                             | Überprüfen Sie, dass die Tab-Reihenfolge auf der Seite logisch ist und interaktive Elemente erreichbar sind.                |
 |                                | **Fokus-Indikator nicht entfernen**                                                                    | Sichtbare Fokus-Stile sicherstellen, um Tastaturnutzern die Navigation zu erleichtern.                                      |
 | **Testen und Überprüfen**       | **Überprüfen Sie Ihre Inhalte im Frontend mit dem Barrierechecker for_sa11y**                          | 1. Öffnen Sie das REDAXO-Frontend.<br>2. Unten rechts erscheint ein blauer Button mit einer Figur in der Mitte.<br>3. Klicken Sie auf diesen Button, um den **for_sa11y**-Checker zu öffnen.<br>4. for_sa11y überprüft die Seite auf Barrierefreiheitsprobleme und hebt diese direkt hervor. |
+|                                | **BFSG-Check mit KLXM**                                                                                | Nutzen Sie den **[BFSG Check der KLXM](https://klxm.de/bfsgcheck/)** für eine umfassende Überprüfung Ihrer Website auf BFSG-Konformität.<br>**Hinweis:** Dies ist nur eine Hilfestellung und bedarf zusätzlich einer rechtlichen und technischen Prüfung durch Fachkräfte. |
+|                                | **Barrierefreiheitserklärung erstellen**                                                               | Verwenden Sie den **[Generator für Barrierefreiheitserklärung](https://klxm.de/bfsg-generator/)** als Grundlage für Ihre Erklärung.<br>**Wichtiger Hinweis:** Der Generator bietet nur eine Hilfestellung. Die erstellte Erklärung muss rechtlich und technisch geprüft und an Ihre spezifischen Gegebenheiten angepasst werden. |
 |                                | **Tastatursteuerung testen**                                                                            | 1. Navigieren Sie durch die Seite nur mit der Tastatur (Tabulator-Taste für Fokus und Enter für Aktionen).<br>2. Stellen Sie sicher, dass alle interaktiven Elemente (Links, Buttons, Formulare) fokussierbar sind und in logischer Reihenfolge erreicht werden.<br>3. Überprüfen Sie, ob der Fokus-Stil sichtbar und eindeutig ist. |
 |                                | **Manuelle Tests durchführen**                                                                         | Testen Sie Seiten mit Screenreadern (z.B. NVDA, VoiceOver) und nur mit der Tastatur, um die Barrierefreiheit sicherzustellen. |
 |                                | **Automatisierte Tests kombinieren**                                                                   | Verwenden Sie for_sa11y zusammen mit anderen Tools wie WAVE oder Lighthouse für eine umfassende Prüfung.                   |
+| **Formulare**                   | **Eingabefelder richtig beschriften**                                                                  | Jedes Eingabefeld braucht eine klare Beschreibung. In REDAXO: Nutzen Sie die Label-Felder in Formular-Modulen.             |
+|                                | **Pflichtfelder kennzeichnen**                                                                         | Markieren Sie Pflichtfelder mit einem Sternchen (*) und erklären Sie am Anfang des Formulars: "Felder mit * sind Pflichtfelder". |
+|                                | **Verständliche Fehlermeldungen**                                                                      | Schreiben Sie konkret, was falsch ist: Statt "Fehler" → "Bitte geben Sie Ihre E-Mail-Adresse ein".                        |
+| **Überschriften und Listen**    | **Überschriften in der richtigen Reihenfolge**                                                         | H1 nur einmal pro Seite (meist der Seitentitel), dann H2, H3, H4... Keine Überschriftsebenen überspringen.                |
+|                                | **Echte Listen verwenden**                                                                             | Für Aufzählungen die Listen-Funktion in REDAXO nutzen, nicht manuell Gedankenstriche oder Punkte tippen.                   |
+| **Häufige Anfängerfehler**      | **"Hier klicken" vermeiden**                                                                           | Statt "Hier klicken" schreiben Sie "Laden Sie unseren Flyer herunter" oder "Zur Anmeldung".                               |
+|                                | **Farbige Texte richtig einsetzen**                                                                    | Verwenden Sie Farbe nie als einzige Information. Beispiel: Nicht nur rot für Fehler, sondern auch ein Warnsymbol.          |
+|                                | **Zu kleine Schrift vermeiden**                                                                        | Nutzen Sie die Standard-Schriftgrößen in REDAXO. Machen Sie Text nicht kleiner als "normal".                               |
 | **Barrierefreie PDFs**          | **Barrierefreie PDFs mit Word und LibreOffice erstellen und prüfen**                                   |                                                                                                                            |
 |                                | **Microsoft Word (Windows/macOS)**                                                                     | 1. **Strukturierung des Dokuments**: Verwenden Sie korrekt formatierte Überschriften (H1, H2, H3), Listen und Tabellen.<br>2. **Alternativtexte**: Fügen Sie Alternativtexte für alle Bilder und Grafiken ein (Rechtsklick auf Bild > "Bild formatieren" > "Alternativtext").<br>3. **Barrierefreiheitsprüfung**: Nutzen Sie die integrierte Barrierefreiheitsprüfung (Reiter "Überprüfen" > "Barrierefreiheit überprüfen"), um Fehler zu finden und zu beheben.<br>4. **PDF exportieren**: Beim Speichern als PDF aktivieren Sie die Option "Barrierefreie PDF erstellen" (Datei > "Speichern unter" > "PDF" > Optionen > "Dokumentstrukturtags für Barrierefreiheit verwenden"). |
 |                                | **LibreOffice (Windows/macOS/Linux)**                                                                  | 1. **Strukturierung des Dokuments**: Verwenden Sie die integrierten Formatvorlagen für Überschriften, Listen und Tabellen.<br>2. **Alternativtexte**: Fügen Sie Alternativtexte für Bilder ein (Rechtsklick auf Bild > "Eigenschaften" > "Alternativtext").<br>3. **PDF exportieren**: Exportieren Sie das Dokument als PDF und aktivieren Sie "PDF/A-1a" oder "PDF/A-2a" für Barrierefreiheit (Datei > "Exportieren als" > "PDF" > PDF/A-1a aktivieren). |
 | **PDFs auf Barrierefreiheit prüfen** | **Windows**: Nutzen Sie **PDF Accessibility Checker (PAC 3)** (kostenlos).<br>**macOS**: Verwenden Sie **Adobe Acrobat Pro** oder Online-Tools.<br>**Web**: Verwenden Sie **Online-Dienste** wie das **PAVE-Tool** (https://pave-pdf.org).                                                                                                                                                                                                                                           |
-|                                | **PDFs in REDAXO einbinden**                                                                            | 1. Laden Sie das PDF in den **Medienpool** hoch.<br>2. Stellen Sie sicher, dass der Dateiname und der Linktext das Dokument klar beschreiben (z.B. „Barrierefreiheit-Richtlinien.pdf“). |
+|                                | **PDFs in REDAXO einbinden**                                                                            | 1. Laden Sie das PDF in den **Medienpool** hoch.<br>2. Stellen Sie sicher, dass der Dateiname und der Linktext das Dokument klar beschreiben (z.B. „Barrierefreiheit-Richtlinien.pdf"). |
 
 ---
 
@@ -54,9 +136,21 @@ Leichte und einfache Sprache verbessern die Verständlichkeit von Texten. Mensch
 | **Einfache Sprache**   | Klarer, einfacher Aufbau. Fachbegriffe werden vermieden oder erklärt.                                                                                            | "Es ist essenziell, dass wir in unserem Projektteam eine interdisziplinäre Herangehensweise an den Tag legen."      | "Es ist wichtig, dass das Team aus Fachleuten verschiedener Bereiche gut zusammenarbeitet."| "Es ist wichtig, dass das Team aus Fachleuten gut zusammenarbeitet."                    |
 | **Leichte Sprache**    | Sehr kurze Sätze, kein Fachvokabular. Wird häufig auch durch Piktogramme oder Bilder unterstützt. Nur wesentliche Informationen.                                 | "Die strategische Ausrichtung des Unternehmens wird durch eine Vielzahl von Faktoren beeinflusst."                 | "Es gibt viele Gründe, die die Strategie des Unternehmens beeinflussen."                 | "Es gibt viele Gründe, die die Planung der Firma beeinflussen."                         |
 
+---
+
+### **Rechtliche Hinweise zu BFSG und Barrierefreiheitserklärung**
+
+**Wichtiger Rechtlicher Hinweis:** Die hier erwähnten Tools (BFSG Check und Generator für Barrierefreiheitserklärung von KLXM) dienen ausschließlich als Hilfestellung und erste Orientierung. Sie ersetzen **nicht** die erforderliche rechtliche und technische Fachprüfung durch qualifizierte Expert:innen.
+
+**Empfohlenes Vorgehen:**
+1. Nutzen Sie die Tools als ersten Schritt zur Selbsteinschätzung
+2. Lassen Sie Ihre Website durch zertifizierte Barrierefreiheits-Expert:innen prüfen
+3. Konsultieren Sie rechtliche Beratung für die finale Barrierefreiheitserklärung
+4. Dokumentieren Sie alle durchgeführten Maßnahmen und Tests
+
 ## Möglicher Ablauf
 
-<div class="mermaid">
+```mermaid
 graph TD
     A[Beginne Inhaltserstellung] --> B{Verwendung vorgefertigter Inhaltsblöcke?}
     B -->|Ja| C[Folge integrierten Barrierefreiheitsrichtlinien]
@@ -74,20 +168,22 @@ graph TD
     J --> K
     K --> L[Teste Tastaturnavigation]
     L --> M[Verwende for_sa11y-Prüfer]
-    M --> N{Probleme gefunden?}
-    N -->|Ja| O[Behebe Probleme]
-    N -->|Nein| P{Erstellung eines PDFs notwendig?}
-    O --> M
-    P -->|Ja| Q[Erstelle barrierefreies PDF]
-    P -->|Nein| R[Veröffentliche Inhalt]
-    Q --> S{PDF barrierefrei?}
-    S -->|Ja| R
-    S -->|Nein| T{Alternativen möglich?}
-    T -->|Ja| U[Biete alternative Formate an]
-    T -->|Nein| V[Dokumentiere Einschränkungen]
-    U --> R
-    V --> W[Plane zukünftige Verbesserungen]
-    W --> R
-    R --> X[Ende]
-</div>
-
+    M --> N[Führe BFSG-Check durch]
+    N --> O{Probleme gefunden?}
+    O -->|Ja| P[Behebe Probleme]
+    O -->|Nein| Q{Erstellung eines PDFs notwendig?}
+    P --> M
+    Q -->|Ja| R[Erstelle barrierefreies PDF]
+    Q -->|Nein| S[Erstelle Barrierefreiheitserklärung]
+    R --> T{PDF barrierefrei?}
+    T -->|Ja| S
+    T -->|Nein| U{Alternativen möglich?}
+    U -->|Ja| V[Biete alternative Formate an]
+    U -->|Nein| W[Dokumentiere Einschränkungen]
+    V --> S
+    W --> X[Plane zukünftige Verbesserungen]
+    X --> S
+    S --> Y[Rechtliche/technische Prüfung beauftragen]
+    Y --> Z[Veröffentliche Inhalt]
+    Z --> AA[Ende]
+```
