@@ -1,4 +1,4 @@
-# **Barrierefreie Software Gesetz (BFSG)**
+# **Barrierefreiheitsstärkungsgesetz(BFSG)**
 
 ## Was ist das BFSG?
 Das Barrierefreiheitsstärkungsgesetz ist ein deutsches Gesetz, das seit Juni 2025 gilt. Es schreibt vor, dass bestimmte Websites und Apps barrierefrei sein müssen, damit alle Menschen sie nutzen können.
