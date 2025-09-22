@@ -10,6 +10,8 @@ page:
     subpages:
         cheatsheet:
             title: 'Cheatsheet'
+        bfsg:
+            title: 'BFSG'
         screenreader:
             title: 'Emulator'
             hasLayout: false

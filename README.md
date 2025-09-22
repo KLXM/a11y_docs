@@ -24,62 +24,6 @@
 
 ---
 
-### **Was ist das BFSG?**
-Das Barrierefreiheitsstärkungsgesetz ist ein deutsches Gesetz, das seit Juni 2025 gilt. Es schreibt vor, dass bestimmte Websites und Apps barrierefrei sein müssen, damit alle Menschen sie nutzen können.
-
-### **Für wen gilt das BFSG?**
-**Das Gesetz gilt für Unternehmen, die:**
-- Online-Shops betreiben (E-Commerce)
-- Bankdienstleistungen online anbieten
-- E-Books verkaufen
-- Verkehrsdienste anbieten (Bus, Bahn, Flug)
-- Telefon- und Internetdienste anbieten
-- Streaming-Dienste betreiben
-
-**Ausnahmen gibt es für:**
-- Sehr kleine Unternehmen (weniger als 10 Mitarbeiter UND Jahresumsatz unter 2 Millionen Euro)
-- Reine Informationswebsites ohne Verkauf
-- Interne Firmenwebsites
-
-### **Was muss ich tun?**
-1. **Barrierefreie Website**: Ihre Website muss den WCAG 2.1 Standard erfüllen
-2. **Barrierefreiheitserklärung**: Sie müssen eine Erklärung auf Ihrer Website veröffentlichen
-3. **Feedback-Möglichkeit**: Nutzer müssen Probleme melden können
-
-### **Wichtige Termine**
-- **Seit 28. Juni 2025**: Das Gesetz gilt für alle neuen Websites und Apps
-- **Bis 28. Juni 2030**: Auch bestehende Websites müssen angepasst sein
-
-### **Was passiert bei Verstößen?**
-- Bußgelder bis zu 100.000 Euro möglich
-- Abmahnungen durch Konkurrenten oder Verbraucherschützer
-- Imageprobleme für Ihr Unternehmen
-
-### **Praktische Tipps für Sie**
-✅ **Sofort machen:**
-- Überprüfen Sie, ob das BFSG für Sie gilt
-- Nutzen Sie die Tools in diesem Cheatsheet für erste Tests
-- Erstellen Sie eine einfache Barrierefreiheitserklärung
-
-✅ **Mittelfristig planen:**
-- Beauftragen Sie eine professionelle Prüfung
-- Schulen Sie Ihr Team
-- Erstellen Sie einen Verbesserungsplan
-
-✅ **Langfristig sicherstellen:**
-- Regelmäßige Kontrollen
-- Updates der Barrierefreiheitserklärung
-- Feedback ernst nehmen und umsetzen
-
-### **Wo finde ich Hilfe?**
-- **Bundesfachstelle Barrierefreiheit**: [bundesfachstelle-barrierefreiheit.de](https://www.bundesfachstelle-barrierefreiheit.de)
-- **BFSG-Gesetz mit praktischen Infos**: [bfsg-gesetz.de](https://bfsg-gesetz.de/)
-- **Bundesministerium für Arbeit und Soziales**: [bmas.de](https://www.bmas.de/DE/Service/Gesetze-und-Gesetzesvorhaben/barrierefreiheitsstaerkungsgesetz.html)
-
-**🚨 Wichtiger Hinweis:** Diese Informationen ersetzen keine Rechtsberatung. Lassen Sie sich bei Unsicherheiten von einem Anwalt beraten!
-
----
-
 | **Kategorie**                  | **Aktion**                                                                                             | **Schritte / Hinweise**                                                                                                    |
 |--------------------------------|--------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
 | **Struktur und Semantik**       | **Achten Sie bei der Verwendung der vorbereiteten Inhaltsblöcke auf Barrierefreiheitshinweise**        | Ihr REDAXO bietet vorbereitete Inhaltsblöcke. Achten Sie darauf, dass diese Blöcke korrekt verwendet werden und entsprechende Hinweise zur Barrierefreiheit (z.B. Alternativtexte für Bilder, richtige Überschriftenhierarchie) beachtet werden. |
@@ -107,7 +51,8 @@ Das Barrierefreiheitsstärkungsgesetz ist ein deutsches Gesetz, das seit Juni 20
 |                                | **Farbige Texte richtig einsetzen**                                                                    | Verwenden Sie Farbe nie als einzige Information. Beispiel: Nicht nur rot für Fehler, sondern auch ein Warnsymbol.          |
 |                                | **Zu kleine Schrift vermeiden**                                                                        | Nutzen Sie die Standard-Schriftgrößen in REDAXO. Machen Sie Text nicht kleiner als "normal".                               |
 | **Barrierefreie PDFs**          | **Barrierefreie PDFs mit Word und LibreOffice erstellen und prüfen**                                   |                                                                                                                            |
-|                                | **Microsoft Word (Windows/macOS)**                                                                     | 1. **Strukturierung des Dokuments**: Verwenden Sie korrekt formatierte Überschriften (H1, H2, H3), Listen und Tabellen.<br>2. **Alternativtexte**: Fügen Sie Alternativtexte für alle Bilder und Grafiken ein (Rechtsklick auf Bild > "Bild formatieren" > "Alternativtext").<br>3. **Barrierefreiheitsprüfung**: Nutzen Sie die integrierte Barrierefreiheitsprüfung (Reiter "Überprüfen" > "Barrierefreiheit überprüfen"), um Fehler zu finden und zu beheben.<br>4. **PDF exportieren**: Beim Speichern als PDF aktivieren Sie die Option "Barrierefreie PDF erstellen" (Datei > "Speichern unter" > "PDF" > Optionen > "Dokumentstrukturtags für Barrierefreiheit verwenden"). |
+|                                | **📄 Umfassende Anleitung für Microsoft Word**                                                          | **[Detaillierte Schritt-für-Schritt-Anleitung: Barrierefreie PDFs mit Microsoft Word](https://data.klxm.de/index.php/s/bFm4t66C8swfKjP)**<br>Diese Anleitung behandelt: Dokumentstrukturierung, Formatierung, Bilder und Tabellen zugänglich machen, Export-Einstellungen und PDF-Prüfung. |
+|                                | **Microsoft Word (Windows/macOS) - Kurzübersicht**                                                     | 1. **Strukturierung des Dokuments**: Verwenden Sie korrekt formatierte Überschriften (H1, H2, H3), Listen und Tabellen.<br>2. **Alternativtexte**: Fügen Sie Alternativtexte für alle Bilder und Grafiken ein (Rechtsklick auf Bild > "Bild formatieren" > "Alternativtext").<br>3. **Barrierefreiheitsprüfung**: Nutzen Sie die integrierte Barrierefreiheitsprüfung (Reiter "Überprüfen" > "Barrierefreiheit überprüfen"), um Fehler zu finden und zu beheben.<br>4. **PDF exportieren**: Beim Speichern als PDF aktivieren Sie die Option "Barrierefreie PDF erstellen" (Datei > "Speichern unter" > "PDF" > Optionen > "Dokumentstrukturtags für Barrierefreiheit verwenden"). |
 |                                | **LibreOffice (Windows/macOS/Linux)**                                                                  | 1. **Strukturierung des Dokuments**: Verwenden Sie die integrierten Formatvorlagen für Überschriften, Listen und Tabellen.<br>2. **Alternativtexte**: Fügen Sie Alternativtexte für Bilder ein (Rechtsklick auf Bild > "Eigenschaften" > "Alternativtext").<br>3. **PDF exportieren**: Exportieren Sie das Dokument als PDF und aktivieren Sie "PDF/A-1a" oder "PDF/A-2a" für Barrierefreiheit (Datei > "Exportieren als" > "PDF" > PDF/A-1a aktivieren). |
 | **PDFs auf Barrierefreiheit prüfen** | **Windows**: Nutzen Sie **PDF Accessibility Checker (PAC 3)** (kostenlos).<br>**macOS**: Verwenden Sie **Adobe Acrobat Pro** oder Online-Tools.<br>**Web**: Verwenden Sie **Online-Dienste** wie das **PAVE-Tool** (https://pave-pdf.org).                                                                                                                                                                                                                                           |
 |                                | **PDFs in REDAXO einbinden**                                                                            | 1. Laden Sie das PDF in den **Medienpool** hoch.<br>2. Stellen Sie sicher, dass der Dateiname und der Linktext das Dokument klar beschreiben (z.B. „Barrierefreiheit-Richtlinien.pdf"). |

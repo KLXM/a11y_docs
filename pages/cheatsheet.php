@@ -30,6 +30,39 @@ $body = $searchField . '
     </main>
 </div>';
 
+// JavaScript für Initialisierung direkt einbetten
+$js = '
+<script>
+jQuery(document).ready(function($) {
+    // Mark.js Initialisierung für Suche
+    if (typeof Mark !== "undefined") {
+        const markInstance = new Mark(document.querySelector(".docs-content"));
+        const searchInput = document.querySelector(".docs-search");
+        if (searchInput) {
+            searchInput.addEventListener("input", function(e) {
+                markInstance.unmark();
+                if (e.target.value) {
+                    markInstance.mark(e.target.value);
+                }
+            });
+        }
+    } else {
+        console.log("Mark.js not loaded");
+    }
+    
+    // Mermaid.js Initialisierung für Diagramme
+    if (typeof mermaid !== "undefined") {
+        mermaid.initialize({ startOnLoad: true });
+        mermaid.init(undefined, document.querySelectorAll(".language-mermaid"));
+    } else {
+        console.log("Mermaid.js not loaded");
+    }
+});
+</script>';
+
+// JavaScript in das Layout einbauen
+$body = $body . $js;
+
 // Fragment ausgeben
 $fragment = new rex_fragment();
 $fragment->setVar('title', $addon->i18n('a11y_docs_title'));

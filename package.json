@@ -1,0 +1,25 @@
+{
+  "name": "a11y_docs",
+  "version": "1.0.0",
+  "description": "[Video auf YouTube](https://www.youtube.com/watch?v=lC6VO3ai8Bg)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KLXM/a11y_docs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/KLXM/a11y_docs/issues"
+  },
+  "homepage": "https://github.com/KLXM/a11y_docs#readme",
+  "dependencies": {
+    "mark.js": "^8.11.1",
+    "mermaid": "^10.9.4"
+  }
+}
