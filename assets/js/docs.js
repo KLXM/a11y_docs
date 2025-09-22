@@ -13,6 +13,11 @@ $(document).on('rex:ready', function() {
                 fontSize: '14px'
             }
         });
+        
+        // Sicherstellen, dass Mermaid nach dem Laden des Inhalts initialisiert wird
+        setTimeout(function() {
+            mermaid.init();
+        }, 500);
     }
     
     // Inhaltsverzeichnis generieren
@@ -120,11 +125,4 @@ $(document).on('rex:ready', function() {
     }
 });
 
-$(document).on('rex:ready', function() {
-    if (typeof mermaid !== "undefined") {
-        mermaid.initialize({
-            startOnLoad: true,
-            theme: "default"
-        });
-    }
-});
+
