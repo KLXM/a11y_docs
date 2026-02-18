@@ -51,8 +51,8 @@ Das Barrierefreiheitsstärkungsgesetz ist ein deutsches Gesetz, das seit Juni 20
 - **Bundesfachstelle Barrierefreiheit**: [bundesfachstelle-barrierefreiheit.de](https://www.bundesfachstelle-barrierefreiheit.de)
 - **BFSG-Gesetz mit praktischen Infos**: [bfsg-gesetz.de](https://bfsg-gesetz.de/)
 - **Bundesministerium für Arbeit und Soziales**: [bmas.de](https://www.bmas.de/DE/Service/Gesetze-und-Gesetzesvorhaben/barrierefreiheitsstaerkungsgesetz.html)
-- **Leserlich.info**: [leserlich.info](https://leserlich.info) - Schritte zu einem inklusiven Kommunikationsdesign / Deutscher Blinden- und Sehbehindertenverband e. V.
-- **Bundesfachstelle Barrierefreiheit: Barrierefreie PDFs**: [bundesfachstelle-barrierefreiheit.de/Barrierefreie-PDF](https://www.bundesfachstelle-barrierefreiheit.de/DE/Fachwissen/Informationstechnik/Barrierefreie-PDF/barrierefreie-pdf_node) - Knappschaft Bahn See
+- **Schritte zu einem inklusiven Kommunikationsdesign** (Deutscher Blinden- und Sehbehindertenverband e. V.): [leserlich.info](https://leserlich.info)
+- **Barrierefreie PDF** (Knappschaft Bahn See): [bundesfachstelle-barrierefreiheit.de](https://www.bundesfachstelle-barrierefreiheit.de/DE/Fachwissen/Informationstechnik/Barrierefreie-PDF/barrierefreie-pdf_node)
 
 **🚨 Wichtiger Hinweis:** Diese Informationen ersetzen keine Rechtsberatung. Lassen Sie sich bei Unsicherheiten von einem Anwalt beraten!
 
