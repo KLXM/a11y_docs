@@ -132,3 +132,10 @@ graph TD
     Y --> Z[Veröffentliche Inhalt]
     Z --> AA[Ende]
 ```
+
+---
+
+## Links für weitere Informationen
+
+- **Schritte zu einem inklusiven Kommunikationsdesign** (Deutscher Blinden- und Sehbehindertenverband e. V.): [leserlich.info](https://leserlich.info)
+- **Barrierefreie PDF** (Knappschaft Bahn See): [bundesfachstelle-barrierefreiheit.de](https://www.bundesfachstelle-barrierefreiheit.de/DE/Fachwissen/Informationstechnik/Barrierefreie-PDF/barrierefreie-pdf_node)
