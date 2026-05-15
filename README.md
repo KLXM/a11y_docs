@@ -4,6 +4,42 @@
 
 [Video auf YouTube](https://www.youtube.com/watch?v=lC6VO3ai8Bg)
 
+## TinyMCE-A11y-Loesungen fuer die Redaktion
+
+Das aktuelle Setup mit TinyMCE und den AddOn-Erweiterungen ist gezielt fuer Editorial Work ausgelegt:
+
+- A11y-Hinweise direkt im Redaktionsprozess statt erst am Ende.
+- Struktur-, Link-, Bild- und Tabellenqualitaet wird bereits beim Bearbeiten abgesichert.
+- Konsistente Darstellung ueber kuratierte Stylesets statt freier Farbwahl im Editor.
+- Frontend-Gegenpruefung ueber for_sa11y fuer die reale Ausgabe ausserhalb des Editors.
+
+Wenn diese Loesung in Ihrer Installation noch nicht verfuegbar ist, sprechen Sie bitte Ihre zustaendige Agentur an. Ein Wechsel auf den neuen Editor ist meist zu geringen Kosten moeglich, sofern bereits ein HTML-Editor im Einsatz war.
+
+### Aktuelle Entwicklungen und Praxis-Tipps
+
+Fuer die Redaktion:
+
+- Arbeiten Sie mit den vorgesehenen Inhaltsbausteinen, nicht mit freien Layout-Konstruktionen.
+- Nutzen Sie die Schnellpruefungen vor jedem Publish (for_a11y im Editor, for_sa11y im Frontend).
+- Hinterlegen Sie ALT-Texte, Linkziele und Ueberschriften konsequent semantisch.
+
+Fuer einen Relaunch:
+
+- Definieren Sie frueh eine verbindliche Inhalts- und Komponenten-Governance.
+- Migrieren Sie Legacy-Inhalte mit Fokus auf Ueberschriftenhierarchie, Linktexte und Medienbeschreibungen.
+- Planen Sie redaktionelle Schulungen und einen Abnahmelauf mit realen Beispielseiten ein.
+
+Nuetzliche Ressourcen:
+
+- UX- und Accessibility-Perspektive: [kern-ux.de](http://kern-ux.de/)
+- Technische Umsetzung und Beratung: [opencode.de](http://opencode.de/)
+- PDF-Services fuer Redaktionen: [services.opencode.de/easypdf](https://services.opencode.de/easypdf/)
+- Professionelle BITV/WCAG-Pruefung (deutsch): [bitvtest.de](https://bitvtest.de/)
+- Kostenloser Browser-A11y-Check: [WAVE – webaim.org](https://wave.webaim.org/)
+- Barrierefreie PDFs Schritt fuer Schritt (deutsch): [accessible-pdf.info](https://accessible-pdf.info/de/)
+- WCAG-Checkliste fuer Redaktion und Entwicklung: [a11yproject.com/checklist](https://www.a11yproject.com/checklist/)
+- Offizielle WCAG 2.2 Ressourcen (ISO-Standard): [W3C WAI](https://www.w3.org/WAI/standards-guidelines/wcag/)
+
 
 ## Kurz und knapp
 ---
@@ -139,3 +175,6 @@ graph TD
 
 - **Schritte zu einem inklusiven Kommunikationsdesign** (Deutscher Blinden- und Sehbehindertenverband e. V.): [leserlich.info](https://leserlich.info)
 - **Barrierefreie PDF** (Knappschaft Bahn See): [bundesfachstelle-barrierefreiheit.de](https://www.bundesfachstelle-barrierefreiheit.de/DE/Fachwissen/Informationstechnik/Barrierefreie-PDF/barrierefreie-pdf_node)
+- **UX- und Accessibility-Impulse**: [kern-ux.de](http://kern-ux.de/)
+- **Technische Umsetzungspartner**: [opencode.de](http://opencode.de/)
+- **PDF-Service fuer Redaktionen**: [services.opencode.de/easypdf](https://services.opencode.de/easypdf/)
