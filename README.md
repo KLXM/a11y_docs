@@ -51,7 +51,7 @@ Nuetzliche Ressourcen:
 **✅ Bevor Sie "Veröffentlichen" klicken:**
 
 1. **Alt-Texte da?** → Haben alle Bilder einen Alt-Text oder alt="" bei dekorativen Bildern?
-2. **Links verständlich?** → Kann man am Linktext erkennen, wohin er führt?
+2. **Links verständlich?** → Kann man am Linktext erkennen, wohin er führt? Sind Links schlicht formatiert (nicht fett)?
 3. **Überschriften logisch?** → H1 → H2 → H3 (keine Sprünge)?
 4. **Kontrast gut?** → Ist der Text auch bei schlechtem Bildschirm lesbar?
 5. **For_sa11y geprüft?** → Zeigt der blaue Button unten rechts grünes Licht?
@@ -66,6 +66,7 @@ Nuetzliche Ressourcen:
 | **Bilder und Alternativtexte**  | **Alt-Texte für Bilder einfügen**                                                                      | 1. Im Medienpool Alt-Texte definieren.<br>2. Alternativtexte in Modulen wie "Text mit Bild" einfügen.                       |
 |                                | **Dekorative Bilder ohne Alt-Text**                                                                    | Setzen Sie für rein dekorative Bilder das Alt-Attribut auf `alt=""`.                                                       |
 | **Links und Navigation**        | **Sinnvolle Linktexte verwenden**                                                                      | Vermeiden Sie generische Linktexte wie "Hier klicken". Der Linktext sollte das Ziel klar beschreiben.                       |
+|                                | **Links nicht zusätzlich formatieren**                                                                 | Links nicht fett, kursiv oder farbig hervorheben – auch nicht nur teilweise. Sie sind durch Farbe und Unterstreichung bereits erkennbar; zusätzliche Hervorhebung wirkt unruhig, kann wie eine Überschrift wirken und lenkt vom Text ab. Beim Einfügen aus Word mitgebrachte Formatierung über „Formatierung entfernen“ löschen. |
 |                                | **Sprunglinks hinzufügen**                                                                             | Fügen Sie **Skiplinks** hinzu, damit Nutzer direkt zum Hauptinhalt springen können.                                         |
 | **Farben und Kontraste**        | **Hoher Kontrast für Texte**                                                                           | Stellen Sie sicher, dass Text und Hintergrund einen Kontrastwert von mindestens 4.5:1 haben. Verwenden Sie Tools wie WebAIM. |
 |                                | **Text und Hintergrundfarben zugänglich gestalten**                                                     | Farben im Modul klar definieren, kontrastreiche Kombinationen verwenden.                                                   |
